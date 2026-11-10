@@ -2,7 +2,7 @@ import os
 import numpy as np
 import pandas as pd
 import neuroboros as nb
-from scipy.spatial.distance import pdist,squareform,cdist
+from scipy.spatial.distance import squareform,cdist
 # calculate_connectivity is imported lazily inside conn_features_all_subjects: importing it at
 # module level drags in hyperalignment.ridge, which is absent from some envs (e.g. the "ann" env
 # used for the encoding-model scripts), and that made isc_utils unimportable there even for
@@ -452,31 +452,6 @@ def conn_features_all_subjects(targets_ts, seed_ts, zscore_axis=0, z=True, dtype
             feats[s] = conn.reshape(-1).astype(dtype)
         else:
             feats[s] = conn.astype(dtype)
-    return feats
-
-def rdm_features_all_subjects(X, dtype=np.float32,z=False,has_nan=True):
-    N, T, V = X.shape
-    L_full = T * (T - 1) // 2
-    iu_full = np.triu_indices(T, k=1)
-    feats = np.zeros((N, L_full), dtype=dtype)
-
-    for s in range(N):
-        rdm_s = pdist(X[s], metric='correlation')
-        if z:
-            if has_nan:
-                # zscore on valid pairs only
-                rdm_mean = np.nanmean(rdm_s)
-                rdm_std  = np.nanstd(rdm_s)
-                rdm_std[rdm_std==0] = 1.0
-                rdm_s    = (rdm_s - rdm_mean) / rdm_std
-                feats[s] = np.nan_to_num(rdm_s)
-            else:
-                rdm_mean = np.mean(rdm_s)
-                rdm_std = np.std(rdm_s)
-                rdm_std[rdm_std==0] = 1.0
-                feats[s] = (rdm_s - rdm_mean) / rdm_std
-        else:
-            feats[s] = rdm_s # to match with previous results
     return feats
 
 def compute_targets_ts_from_mapping(dms_lr, source_space, target_space, mask=True, lr = "lr", dtype=np.float32):

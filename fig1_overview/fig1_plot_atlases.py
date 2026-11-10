@@ -7,6 +7,7 @@ pallidum, ventral diencephalon), and for aseg (3) a legend-only figure.
 
 Requires the `subcortex_visualization` package (fork with the aseg atlas:
 https://github.com/cindyhfls/subcortex_visualization) and the aseg/Tian lookup tables in utils/support_files.
+Fork was created from "anniegbryant/subcortex_visualization:main"
 
 Usage:  python fig1_plot_atlases.py [--atlases aseg TianS1 TianS2 TianS3 TianS4]
 Output: results/figures/fig1A_aseg_atlas_MNI_wBrain.png, fig1A_3Dplot_aseg.png, fig1A_aseg_legend.png,

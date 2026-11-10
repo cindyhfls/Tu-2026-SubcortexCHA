@@ -5,7 +5,6 @@ subject's feature is correlated with the mean of the other subjects' features (l
 Features are
   resp_*  the seed-region response time series (voxels x time),
   conn_*  the connectivity of each seed voxel to a set of target time series (--targets),
-  rdm_*   the time-point RDM of the seed region,
 each computed on the 'coarsefine' data (all voxels), the 'coarse' data (nucleus mean) or the 'fine'
 data (nucleus mean subtracted = "residual fine"). `*_voxelwise` gives a per-voxel ISC map instead.
 
@@ -43,7 +42,7 @@ import numpy as np
 import neuroboros as nb
 from utils.data_io_utils import ensure_memmap,row_done,return_aseg_labels,get_aseg_sls,return_Tian_labels,get_Tian_sls,roi_hemisphere,untransformed_target_label
 from utils.hyperalignment_utils import get_target_ts
-from utils.isc_utils import loo_corrsim_dot,loo_voxelwise_corrsim_dot,parse_data_coarse_fine,conn_features_all_subjects,rdm_features_all_subjects,compute_targets_ts_from_mapping
+from utils.isc_utils import loo_corrsim_dot,loo_voxelwise_corrsim_dot,parse_data_coarse_fine,conn_features_all_subjects,compute_targets_ts_from_mapping
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--sl-start", type=int, default=0, help="first seed region of this chunk")
@@ -64,7 +63,7 @@ parser.add_argument("--dataset", type=str, default="Raiders")
 parser.add_argument("--task", type=str, default="raiders")
 parser.add_argument("--run", type=int, nargs="+", default=[3, 4])
 default_metrics = ["resp_coarse", "resp_coarsefine", "resp_fine",
-                   "conn_coarse", "conn_coarsefine", "conn_fine", "rdm_coarsefine",
+                   "conn_coarse", "conn_coarsefine", "conn_fine",
                    "resp_voxelwise", "conn_voxelwise"]
 parser.add_argument("--metrics", type=str, nargs="+", default=default_metrics, choices=default_metrics,
                     help="metrics to compute; memmaps are created only for these")
@@ -252,7 +251,6 @@ all_mm = {
     "conn_coarse":     (os.path.join(conn_dir, "isc_conn_coarse.dat"),     shape),
     "conn_coarsefine": (os.path.join(conn_dir, "isc_conn_coarsefine.dat"), shape),
     "conn_fine":       (os.path.join(conn_dir, "isc_conn_fine.dat"),       shape),
-    "rdm_coarsefine":  (os.path.join(outdir, "isc_rdm_coarsefine.dat"),  shape),
 }
 METRICS = set(args.metrics)
 mm = {k: ensure_memmap(path, shp) for k, (path, shp) in all_mm.items() if k in METRICS}
@@ -315,11 +313,6 @@ for curr_row, isl in enumerate(range(sl_start, sl_stop)):
         if f"conn_{_d}" in mm and not row_done(mm[f"conn_{_d}"][curr_row]):
             feats = conn_features_all_subjects(tgt_ts, _X, zscore_axis=0)
             mm[f"conn_{_d}"][curr_row] = loo_corrsim_dot(feats); mm[f"conn_{_d}"].flush()
-
-    # RDM (defined on the undecomposed data only)
-    if "rdm_coarsefine" in mm and not row_done(mm["rdm_coarsefine"][curr_row]):
-        rdmF = rdm_features_all_subjects(X)
-        mm["rdm_coarsefine"][curr_row] = loo_corrsim_dot(rdmF); mm["rdm_coarsefine"].flush()
 
     if isl % 10 == 0:
         print(f"  isl {isl+1}/{nSL} done")

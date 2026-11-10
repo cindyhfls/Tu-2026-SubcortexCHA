@@ -1,7 +1,7 @@
 """Leave-one-out ISC of subcortical responses and connectivity in the HCP 7T movie data.
 
 HCP 7T MOVIE runs 3-4 (34 test subjects), seeds = Tian parcels (7T Tian atlas, 1.6 mm). Same features
-and conditions as fig2_3_isc/fig2_3_loo.py (resp_/conn_/rdm_ x coarse/coarsefine/fine,
+and conditions as fig2_3_isc/fig2_3_loo.py (resp_/conn_ x coarse/coarsefine/fine,
 leave-one-out ISC, optional contralateral targets), but for the HCP cache layout
 (data/cache/HCP_MOVIE/run34/<space>/<transformation folder>/dms_*.npy).
 
@@ -33,7 +33,7 @@ import argparse
 import numpy as np
 from utils.data_io_utils import ensure_memmap,row_done,return_Tian_labels,get_Tian_sls,roi_hemisphere
 from utils.hyperalignment_utils import get_target_ts
-from utils.isc_utils import loo_corrsim_dot,parse_data_coarse_fine,conn_features_all_subjects,rdm_features_all_subjects,compute_targets_ts_from_mapping
+from utils.isc_utils import loo_corrsim_dot,parse_data_coarse_fine,conn_features_all_subjects,compute_targets_ts_from_mapping
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--sl-start", type=int, default=0)
@@ -51,7 +51,7 @@ parser.add_argument("--targets-hemisphere", type=str, default="both",
                     help="contralateral: restrict each seed parcel's targets to the opposite hemisphere; "
                          "needs voxelwise targets on the seed atlas (Tian_Subcortex / CHA+Tian_Subcortex)")
 _all_metrics = ["resp_coarse", "resp_coarsefine", "resp_fine",
-                "conn_coarse", "conn_coarsefine", "conn_fine", "rdm_coarsefine"]
+                "conn_coarse", "conn_coarsefine", "conn_fine"]
 parser.add_argument("--metrics", type=str, nargs="+", default=_all_metrics, choices=_all_metrics,
                     help="Compute only these; a skipped metric is neither opened nor written.")
 parser.add_argument("--cache-dir", type=str, default=None,
@@ -180,7 +180,6 @@ _mm_spec = {
     "conn_coarse":     (os.path.join(outdir, CONN_SUBDIR, "isc_conn_coarse.dat"),     shape),
     "conn_coarsefine": (os.path.join(outdir, CONN_SUBDIR, "isc_conn_coarsefine.dat"), shape),
     "conn_fine":       (os.path.join(outdir, CONN_SUBDIR, "isc_conn_fine.dat"),       shape),
-    "rdm_coarsefine":  (os.path.join(outdir, "isc_rdm_coarsefine.dat"),  shape),
 }
 mm = {k: ensure_memmap(*spec) for k, spec in _mm_spec.items() if k in METRICS}
 print(f"metrics: {sorted(mm)}")
@@ -208,11 +207,6 @@ for curr_row, isl in enumerate(range(sl_start, sl_stop)):
         if f"conn_{_d}" in mm and not row_done(mm[f"conn_{_d}"][curr_row]):
             feats = conn_features_all_subjects(tgt_ts, _X, zscore_axis=0)
             mm[f"conn_{_d}"][curr_row] = loo_corrsim_dot(feats); mm[f"conn_{_d}"].flush()
-
-    # RDM (defined on the undecomposed data only)
-    if "rdm_coarsefine" in mm and not row_done(mm["rdm_coarsefine"][curr_row]):
-        rdmF = rdm_features_all_subjects(X)
-        mm["rdm_coarsefine"][curr_row] = loo_corrsim_dot(rdmF); mm["rdm_coarsefine"].flush()
 
     if isl % 10 == 0:
         print(f"  isl {isl+1}/{nSL} done")
