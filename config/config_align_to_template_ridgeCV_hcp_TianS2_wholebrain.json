@@ -1,0 +1,34 @@
+{
+  "dataset": "HCP",
+  "outroot": "results",
+  "extra_str": "ridgeCV_TianS2_wholebrain",
+  "seeds": "TianS2_wholebrain",
+  "targets": [
+    "onavg-ico8"
+  ],
+  "task": "MOVIE",
+  "run": [
+    1,
+    2
+  ],
+  "is_7T": true,
+  "template_dir": [
+    "results/HCP/mni-1pt6mm/templates_TianS2_wholebrain/targets_onavg-ico8"
+  ],
+  "nodistweighted": true,
+  "surface_space": "onavg-ico32",
+  "volume_space": "mni-1pt6mm",
+  "prep_root": "data/HCP_YA/prep_oneregression",
+  "reliability_weighting": false,
+  "alignfunc": "ridgeCV",
+  "ridge_alpha": [
+    10.0,
+    100.0,
+    1000.0,
+    10000.0,
+    100000.0,
+    1000000.0,
+    10000000.0,
+    100000000.0
+  ]
+}

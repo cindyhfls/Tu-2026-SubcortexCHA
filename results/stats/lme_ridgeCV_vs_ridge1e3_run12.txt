@@ -1,0 +1,79 @@
+Training runs 1-2: ridgeCV minus ridge (α=1e3), separate two-condition models.
+Fisher-z ISC; subject-grouped ROI variance component; REML.
+Hyperaligned cortical targets are used for BOTH seed conditions.
+
+Input ridge (α=1e3): /dartfs/rc/lab/H/HaxbyLab/jiaxin/Tu-2026-SubcortexCHA/results/Raiders/mni-2mm_1step_linear_overlap/ridge_alpha1e3_new/transformation_to_template_targets_onavg-ico8/run12/memmap_ISC_loo_aseg_raiders_summary/connectivity_targets-CHA+onavg-ico32/isc_conn_coarsefine
+Input ridgeCV: /dartfs/rc/lab/H/HaxbyLab/jiaxin/Tu-2026-SubcortexCHA/results/Raiders/mni-2mm_1step_linear_overlap/ridgeCV/transformation_to_template_targets_onavg-ico8/run12/memmap_ISC_loo_aseg_raiders_summary/connectivity_targets-CHA+onavg-ico32/isc_conn_coarsefine
+==============================================================================
+Training run: conn_ctx_hyper
+ridge (α=1e3) (reference)  vs  ridgeCV
+13 subjects x 16 ROIs x 2 conditions = 416 rows;  converged=True
+==============================================================================
+             Mixed Linear Model Regression Results
+================================================================
+Model:                MixedLM    Dependent Variable:    zISC    
+No. Observations:     416        Method:                REML    
+No. Groups:           13         Scale:                 0.0040  
+Min. group size:      32         Log-Likelihood:        189.3295
+Max. group size:      32         Converged:             Yes     
+Mean group size:      32.0                                      
+----------------------------------------------------------------
+                     Coef.  Std.Err.    z    P>|z| [0.025 0.975]
+----------------------------------------------------------------
+Intercept             1.759    0.018  98.300 0.000  1.723  1.794
+condition[T.ridgeCV] -0.104    0.006 -16.631 0.000 -0.116 -0.092
+nuclei Var            0.063    0.141                            
+================================================================
+
+Δz = -0.104, 95% CI [-0.116, -0.092], p < 0.001, r ≈ 0.942 (ridge (α=1e3)) to r ≈ 0.930 (ridgeCV) across nuclei
+
+Input ridge (α=1e3): /dartfs/rc/lab/H/HaxbyLab/jiaxin/Tu-2026-SubcortexCHA/results/Raiders/mni-2mm_1step_linear_overlap/ridge_alpha1e3_new/transformation_to_template_targets_onavg-ico8/run12/memmap_ISC_loo_aseg_raiders_summary/connectivity_targets-CHA+aseg-contralateral/isc_conn_coarsefine
+Input ridgeCV: /dartfs/rc/lab/H/HaxbyLab/jiaxin/Tu-2026-SubcortexCHA/results/Raiders/mni-2mm_1step_linear_overlap/ridgeCV/transformation_to_template_targets_onavg-ico8/run12/memmap_ISC_loo_aseg_raiders_summary/connectivity_targets-CHA+aseg-contralateral/isc_conn_coarsefine
+==============================================================================
+Training run: conn_subcx_contra
+ridge (α=1e3) (reference)  vs  ridgeCV
+13 subjects x 16 ROIs x 2 conditions = 416 rows;  converged=True
+==============================================================================
+            Mixed Linear Model Regression Results
+==============================================================
+Model:                MixedLM   Dependent Variable:   zISC    
+No. Observations:     416       Method:               REML    
+No. Groups:           13        Scale:                0.0059  
+Min. group size:      32        Log-Likelihood:       201.3278
+Max. group size:      32        Converged:            Yes     
+Mean group size:      32.0                                    
+--------------------------------------------------------------
+                     Coef. Std.Err.   z    P>|z| [0.025 0.975]
+--------------------------------------------------------------
+Intercept            1.387    0.014 97.426 0.000  1.360  1.415
+condition[T.ridgeCV] 0.096    0.008 12.660 0.000  0.081  0.110
+nuclei Var           0.036    0.071                           
+==============================================================
+
+Δz = 0.096, 95% CI [0.081, 0.110], p < 0.001, r ≈ 0.883 (ridge (α=1e3)) to r ≈ 0.902 (ridgeCV) across nuclei
+
+Input ridge (α=1e3): /dartfs/rc/lab/H/HaxbyLab/jiaxin/Tu-2026-SubcortexCHA/results/Raiders/mni-2mm_1step_linear_overlap/ridge_alpha1e3_new/transformation_to_template_targets_onavg-ico8/run12/memmap_ISC_loo_aseg_raiders_summary/isc_resp_coarsefine
+Input ridgeCV: /dartfs/rc/lab/H/HaxbyLab/jiaxin/Tu-2026-SubcortexCHA/results/Raiders/mni-2mm_1step_linear_overlap/ridgeCV/transformation_to_template_targets_onavg-ico8/run12/memmap_ISC_loo_aseg_raiders_summary/isc_resp_coarsefine
+==============================================================================
+Training run: resp
+ridge (α=1e3) (reference)  vs  ridgeCV
+13 subjects x 16 ROIs x 2 conditions = 416 rows;  converged=True
+==============================================================================
+            Mixed Linear Model Regression Results
+==============================================================
+Model:                MixedLM   Dependent Variable:   zISC    
+No. Observations:     416       Method:               REML    
+No. Groups:           13        Scale:                0.0005  
+Min. group size:      32        Log-Likelihood:       777.5225
+Max. group size:      32        Converged:            Yes     
+Mean group size:      32.0                                    
+--------------------------------------------------------------
+                     Coef. Std.Err.   z    P>|z| [0.025 0.975]
+--------------------------------------------------------------
+Intercept            0.098    0.003 31.850 0.000  0.092  0.104
+condition[T.ridgeCV] 0.048    0.002 21.243 0.000  0.043  0.052
+nuclei Var           0.001    0.010                           
+==============================================================
+
+Δz = 0.048, 95% CI [0.043, 0.052], p < 0.001, r ≈ 0.097 (ridge (α=1e3)) to r ≈ 0.144 (ridgeCV) across nuclei
+

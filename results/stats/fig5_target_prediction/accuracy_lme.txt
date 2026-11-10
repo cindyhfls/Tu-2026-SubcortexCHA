@@ -1,0 +1,112 @@
+##### multiclass: l-thalamus across subject (AA): 0.008, across subject (CHA): 0.065
+multiclass: mean over nuclei and subjects across subject (AA): 0.017, across subject (CHA): 0.069, within subject (AA): 0.063, within subject (CHA): 0.108
+##### multiclass: accuracy ~ condition (across subject (AA) vs across subject (CHA)); random intercepts subject + nucleus
+                   Mixed Linear Model Regression Results
+===========================================================================
+Model:                   MixedLM        Dependent Variable:        accuracy
+No. Observations:        416            Method:                    REML    
+No. Groups:              13             Scale:                     0.0004  
+Min. group size:         32             Log-Likelihood:            645.7417
+Max. group size:         32             Converged:                 Yes     
+Mean group size:         32.0                                              
+---------------------------------------------------------------------------
+                                  Coef. Std.Err.   z    P>|z| [0.025 0.975]
+---------------------------------------------------------------------------
+Intercept                         0.017    0.006  2.771 0.006  0.005  0.028
+condition[T.across subject (CHA)] 0.053    0.002 25.695 0.000  0.049  0.057
+nuclei Var                        0.007                                    
+===========================================================================
+
+
+##### multiclass: accuracy ~ condition (across subject (AA) vs within subject (AA)); random intercepts subject + nucleus
+                  Mixed Linear Model Regression Results
+==========================================================================
+Model:                    MixedLM       Dependent Variable:       accuracy
+No. Observations:         416           Method:                   REML    
+No. Groups:               13            Scale:                    0.0004  
+Min. group size:          32            Log-Likelihood:           691.4924
+Max. group size:          32            Converged:                Yes     
+Mean group size:          32.0                                            
+--------------------------------------------------------------------------
+                                 Coef. Std.Err.   z    P>|z| [0.025 0.975]
+--------------------------------------------------------------------------
+Intercept                        0.017    0.005  3.095 0.002  0.006  0.027
+condition[T.within subject (AA)] 0.047    0.002 25.386 0.000  0.043  0.050
+nuclei Var                       0.006                                    
+==========================================================================
+
+
+##### multiclass: accuracy ~ condition (across subject (CHA) vs within subject (CHA)); random intercepts subject + nucleus
+                   Mixed Linear Model Regression Results
+===========================================================================
+Model:                   MixedLM        Dependent Variable:        accuracy
+No. Observations:        416            Method:                    REML    
+No. Groups:              13             Scale:                     0.0008  
+Min. group size:         32             Log-Likelihood:            533.2778
+Max. group size:         32             Converged:                 Yes     
+Mean group size:         32.0                                              
+---------------------------------------------------------------------------
+                                  Coef. Std.Err.   z    P>|z| [0.025 0.975]
+---------------------------------------------------------------------------
+Intercept                         0.069    0.008  8.829 0.000  0.054  0.085
+condition[T.within subject (CHA)] 0.039    0.003 14.366 0.000  0.033  0.044
+nuclei Var                        0.012                                    
+===========================================================================
+
+
+##### binary: l-thalamus across subject (AA): 0.788, across subject (CHA): 0.957
+binary: mean over nuclei and subjects across subject (AA): 0.740, across subject (CHA): 0.915, within subject (AA): 0.836, within subject (CHA): 0.938
+##### binary: accuracy ~ condition (across subject (AA) vs across subject (CHA)); random intercepts subject + nucleus
+                   Mixed Linear Model Regression Results
+===========================================================================
+Model:                   MixedLM        Dependent Variable:        accuracy
+No. Observations:        416            Method:                    REML    
+No. Groups:              13             Scale:                     0.0010  
+Min. group size:         32             Log-Likelihood:            472.3810
+Max. group size:         32             Converged:                 Yes     
+Mean group size:         32.0                                              
+---------------------------------------------------------------------------
+                                  Coef. Std.Err.   z    P>|z| [0.025 0.975]
+---------------------------------------------------------------------------
+Intercept                         0.740    0.009 81.239 0.000  0.722  0.757
+condition[T.across subject (CHA)] 0.175    0.003 56.149 0.000  0.169  0.181
+nuclei Var                        0.016                                    
+===========================================================================
+
+
+##### binary: accuracy ~ condition (across subject (AA) vs within subject (AA)); random intercepts subject + nucleus
+                  Mixed Linear Model Regression Results
+==========================================================================
+Model:                    MixedLM       Dependent Variable:       accuracy
+No. Observations:         416           Method:                   REML    
+No. Groups:               13            Scale:                    0.0011  
+Min. group size:          32            Log-Likelihood:           461.9024
+Max. group size:          32            Converged:                Yes     
+Mean group size:          32.0                                            
+--------------------------------------------------------------------------
+                                 Coef. Std.Err.   z    P>|z| [0.025 0.975]
+--------------------------------------------------------------------------
+Intercept                        0.740    0.009 79.209 0.000  0.721  0.758
+condition[T.within subject (AA)] 0.097    0.003 30.166 0.000  0.090  0.103
+nuclei Var                       0.017                                    
+==========================================================================
+
+
+##### binary: accuracy ~ condition (across subject (CHA) vs within subject (CHA)); random intercepts subject + nucleus
+                   Mixed Linear Model Regression Results
+============================================================================
+Model:                    MixedLM        Dependent Variable:        accuracy
+No. Observations:         416            Method:                    REML    
+No. Groups:               13             Scale:                     0.0010  
+Min. group size:          32             Log-Likelihood:            687.6004
+Max. group size:          32             Converged:                 Yes     
+Mean group size:          32.0                                              
+----------------------------------------------------------------------------
+                                  Coef. Std.Err.    z    P>|z| [0.025 0.975]
+----------------------------------------------------------------------------
+Intercept                         0.915    0.004 254.824 0.000  0.908  0.922
+condition[T.within subject (CHA)] 0.023    0.003   7.619 0.000  0.017  0.029
+nuclei Var                        0.002    0.010                            
+============================================================================
+
+

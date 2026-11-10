@@ -1,0 +1,4 @@
+response (run12): between-subject mean 0.12, min 0.02, max 0.24
+connectivity (run12): between-subject mean 0.36, min 0.23, max 0.46
+connectivity run12 vs run34, within-subject (diagonal): mean 0.69, l-accumbens min 0.49, r-thalamus max 0.80
+connectivity run12 vs run34, between-subject (off-diagonal): mean 0.33, l-accumbens min 0.22, r-thalamus max 0.42

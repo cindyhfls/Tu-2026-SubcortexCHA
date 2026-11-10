@@ -1,0 +1,5 @@
+slurm/
+  run_isc.sh   command lines for every ISC condition of the paper (fig2_3_isc/05-13, fig7_hcp/22).
+               `bash slurm/run_isc.sh <block>` runs a block; `sbatch slurm/run_isc.sh <block>` submits it.
+               Edit PY and the #SBATCH lines for your cluster; no module loads are needed beyond an
+               environment with neuroboros + hyperalignment.

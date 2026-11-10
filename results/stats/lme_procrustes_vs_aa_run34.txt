@@ -1,0 +1,79 @@
+Test runs 3-4: Procrustes minus AA, separate two-condition models.
+Fisher-z ISC; subject-grouped ROI variance component; REML.
+Hyperaligned cortical targets are used for BOTH seed conditions.
+
+Input AA: /dartfs/rc/lab/H/HaxbyLab/jiaxin/Tu-2026-SubcortexCHA/results/Raiders/mni-2mm_1step_linear_overlap/AA/memmap_ISC_loo_aseg_raiders_summary/connectivity_targets-CHA+onavg-ico32/isc_conn_coarsefine
+Input Procrustes: /dartfs/rc/lab/H/HaxbyLab/jiaxin/Tu-2026-SubcortexCHA/results/Raiders/mni-2mm_1step_linear_overlap/procrustes_new/transformation_to_template_targets_onavg-ico8/memmap_ISC_loo_aseg_raiders_summary/connectivity_targets-CHA+onavg-ico32/isc_conn_coarsefine
+==============================================================================
+Test run: conn_ctx_hyper
+AA (reference)  vs  Procrustes
+13 subjects x 16 ROIs x 2 conditions = 416 rows;  converged=True
+==============================================================================
+              Mixed Linear Model Regression Results
+=================================================================
+Model:                 MixedLM    Dependent Variable:    zISC    
+No. Observations:      416        Method:                REML    
+No. Groups:            13         Scale:                 0.0015  
+Min. group size:       32         Log-Likelihood:        387.0148
+Max. group size:       32         Converged:             Yes     
+Mean group size:       32.0                                      
+-----------------------------------------------------------------
+                        Coef. Std.Err.   z    P>|z| [0.025 0.975]
+-----------------------------------------------------------------
+Intercept               0.502    0.011 44.753 0.000  0.480  0.524
+condition[T.Procrustes] 0.012    0.004  3.237 0.001  0.005  0.020
+nuclei Var              0.025    0.091                           
+=================================================================
+
+Δz = 0.012, 95% CI [0.005, 0.020], p = 0.001, r ≈ 0.464 (AA) to r ≈ 0.474 (Procrustes) across nuclei
+
+Input AA: /dartfs/rc/lab/H/HaxbyLab/jiaxin/Tu-2026-SubcortexCHA/results/Raiders/mni-2mm_1step_linear_overlap/AA/memmap_ISC_loo_aseg_raiders_summary/connectivity_targets-aseg-contralateral/isc_conn_coarsefine
+Input Procrustes: /dartfs/rc/lab/H/HaxbyLab/jiaxin/Tu-2026-SubcortexCHA/results/Raiders/mni-2mm_1step_linear_overlap/procrustes_new/transformation_to_template_targets_onavg-ico8/memmap_ISC_loo_aseg_raiders_summary/connectivity_targets-CHA+aseg-contralateral/isc_conn_coarsefine
+==============================================================================
+Test run: conn_subcx_contra
+AA (reference)  vs  Procrustes
+13 subjects x 16 ROIs x 2 conditions = 416 rows;  converged=True
+==============================================================================
+              Mixed Linear Model Regression Results
+==================================================================
+Model:                MixedLM     Dependent Variable:     zISC    
+No. Observations:     416         Method:                 REML    
+No. Groups:           13          Scale:                  0.0032  
+Min. group size:      32          Log-Likelihood:         361.0722
+Max. group size:      32          Converged:              Yes     
+Mean group size:      32.0                                        
+------------------------------------------------------------------
+                        Coef.  Std.Err.   z    P>|z| [0.025 0.975]
+------------------------------------------------------------------
+Intercept                0.340    0.009 37.316 0.000  0.322  0.358
+condition[T.Procrustes] -0.027    0.006 -4.919 0.000 -0.038 -0.016
+nuclei Var               0.014    0.039                           
+==================================================================
+
+Δz = -0.027, 95% CI [-0.038, -0.016], p < 0.001, r ≈ 0.328 (AA) to r ≈ 0.303 (Procrustes) across nuclei
+
+Input AA: /dartfs/rc/lab/H/HaxbyLab/jiaxin/Tu-2026-SubcortexCHA/results/Raiders/mni-2mm_1step_linear_overlap/AA/memmap_ISC_loo_aseg_raiders_summary/isc_resp_coarsefine
+Input Procrustes: /dartfs/rc/lab/H/HaxbyLab/jiaxin/Tu-2026-SubcortexCHA/results/Raiders/mni-2mm_1step_linear_overlap/procrustes_new/transformation_to_template_targets_onavg-ico8/memmap_ISC_loo_aseg_raiders_summary/isc_resp_coarsefine
+==============================================================================
+Test run: resp
+AA (reference)  vs  Procrustes
+13 subjects x 16 ROIs x 2 conditions = 416 rows;  converged=True
+==============================================================================
+               Mixed Linear Model Regression Results
+===================================================================
+Model:                MixedLM     Dependent Variable:     zISC     
+No. Observations:     416         Method:                 REML     
+No. Groups:           13          Scale:                  0.0000   
+Min. group size:      32          Log-Likelihood:         1492.5383
+Max. group size:      32          Converged:              Yes      
+Mean group size:      32.0                                         
+-------------------------------------------------------------------
+                        Coef.  Std.Err.    z    P>|z| [0.025 0.975]
+-------------------------------------------------------------------
+Intercept                0.022    0.001  29.358 0.000  0.020  0.023
+condition[T.Procrustes] -0.004    0.000 -13.044 0.000 -0.004 -0.003
+nuclei Var               0.000    0.005                            
+===================================================================
+
+Δz = -0.004, 95% CI [-0.004, -0.003], p < 0.001, r ≈ 0.022 (AA) to r ≈ 0.018 (Procrustes) across nuclei
+

@@ -1,0 +1,19 @@
+##### connectivity_targets-CHA+onavg-ico32/isc_conn_fine: slope ~ condition (AA vs CHA); random intercepts subject + nucleus
+           Mixed Linear Model Regression Results
+============================================================
+Model:               MixedLM  Dependent Variable:  slope    
+No. Observations:    416      Method:              REML     
+No. Groups:          13       Scale:               0.0001   
+Min. group size:     32       Log-Likelihood:      1006.5803
+Max. group size:     32       Converged:           Yes      
+Mean group size:     32.0                                   
+------------------------------------------------------------
+                 Coef.  Std.Err.    z    P>|z| [0.025 0.975]
+------------------------------------------------------------
+Intercept        -0.021    0.003  -8.329 0.000 -0.026 -0.016
+condition[T.CHA] -0.082    0.001 -94.940 0.000 -0.083 -0.080
+ROI Var           0.001                                     
+============================================================
+
+
+l-thalamus mean slope (z/mm): AA: -0.026, CHA: -0.112

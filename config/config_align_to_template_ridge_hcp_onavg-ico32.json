@@ -1,0 +1,26 @@
+{
+  "dataset": "HCP",
+  "outroot": "results",
+  "extra_str": "ridge_onavg-ico32",
+  "seeds": "onavg-ico32",
+  "targets": [
+    "onavg-ico8"
+  ],
+  "task": "MOVIE",
+  "run": [
+    1,
+    2
+  ],
+  "template_dir": [
+    "results/HCP/onavg-ico32/templates_distweighted/targets_onavg-ico8"
+  ],
+  "nodistweighted": true,
+  "searchlight_radius": 20,
+  "searchlight_center": "onavg-ico32",
+  "surface_space": "onavg-ico32",
+  "volume_space": "mni-1pt6mm",
+  "prep_root": "data/HCP_YA/prep_oneregression",
+  "reliability_weighting": false,
+  "alignfunc": "ridge",
+  "ridge_alpha": 1000.0
+}
