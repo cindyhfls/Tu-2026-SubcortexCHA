@@ -78,6 +78,6 @@ background images of the atlas plots are downloaded from TemplateFlow on first u
 
 * Budapest: OpenNeuro ds003017 (https://doi.org/10.18112/openneuro.ds003017.v1.0.2).
 * Raiders: to be released on OpenNeuro.
-* HCP 7T movie data: Human Connectome Project (https://www.humanconnectome.org); the preprocessing is in `00_cache_inputs/hcp_resample/`.
+* HCP 7T movie data: Human Connectome Project (https://www.humanconnectome.org); the resampling to onavg surfaces is in `00_cache_inputs/hcp_resample/`.
 
 `data/` and `results/` hold symlinks to the storage locations used for this work.
